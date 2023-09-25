@@ -1,0 +1,15 @@
+* The main loop is shoddy. The problem lies in Python's lack of gaming libraries
+  and that the available libraries are terribly documented. However, most other
+  emulators don't sync on CPU cycles anyway, and always assume 70224 cycles per
+  frame.
+* The APU is a mess and non-functional. Python, even with PyPy, is probably
+  simply too slow for this. It doesn't help that the audio APIs are lacking and
+  underdocumented
+* STOP instruction
+* Joypad interrupt unimplemented. It is apparently not used, so I can hardly test
+  it
+* RTC for MBC3 is not implemented
+* The serial module is just a stub. It prints out all data sent out over it
+  for debugging purposes.
+* VRAM can be freely accessed during mode 3, because enforcing this access
+  violation would imply an extra branch for every read
